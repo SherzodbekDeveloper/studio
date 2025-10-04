@@ -2,13 +2,12 @@
 
 import type React from "react"
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef, useState } from "react"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { motion, useInView } from "framer-motion"
+import { Mail, MapPin, Phone, Send } from "lucide-react"
+import { useRef, useState } from "react"
 
 export default function ContactSection() {
   const ref = useRef(null)
@@ -72,8 +71,8 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-white/50 mb-1">Email</div>
-                  <a href="mailto:info@kokonut.uz" className="text-xl text-white hover:text-rose-400 transition-colors">
-                    info@kokonut.uz
+                  <a href="mailto:info@Creative.uz" className="text-xl text-white hover:text-rose-400 transition-colors">
+                    info@Creative.uz
                   </a>
                 </div>
               </div>

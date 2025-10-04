@@ -1,17 +1,17 @@
 import HeroGeometric from "@/components/hero-section"
 import AboutSection from "@/components/sections/about-section"
-import ServicesSection from "@/components/sections/service-section"
-import ProjectsSection from "@/components/sections/projects-section"
-import TestimonialsSection from "@/components/sections/testimonials-section"
-import TeamSection from "@/components/sections/team-section"
 import ContactSection from "@/components/sections/contact-section"
+import ProjectsSection from "@/components/sections/projects-section"
+import ServicesSection from "@/components/sections/service-section"
+import TeamSection from "@/components/sections/team-section"
+import TestimonialsSection from "@/components/sections/testimonials-section"
 
 export default function HomePage() {
   return (
     <main>
       <section id="hero">
         <HeroGeometric
-          badge="Kokonut Studio"
+          badge="Creative Studio"
           title1="Hayotingizning"
           title2="Eng Go'zal Lahzalari"
           description="To'ylar va bayramlar uchun professional video va foto xizmatlar. Har bir lahzani san'atga aylantiramiz."

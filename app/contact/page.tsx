@@ -1,9 +1,9 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import PageLayout from "@/components/page-layout"
+import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import { Mail, MapPin, Phone, Send } from "lucide-react"
 
 const contactInfo = [
   {
@@ -15,8 +15,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "info@kokonut.uz",
-    href: "mailto:info@kokonut.uz",
+    value: "info@Creative.uz",
+    href: "mailto:info@Creative.uz",
   },
   {
     icon: MapPin,

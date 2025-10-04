@@ -1,8 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Camera, Heart, Award, Users } from "lucide-react"
 import PageLayout from "@/components/page-layout"
+import { motion } from "framer-motion"
+import { Award, Camera, Heart, Users } from "lucide-react"
 
 const stats = [
 	{ icon: Camera, label: "Loyihalar", value: "500+" },
@@ -43,7 +43,7 @@ export default function AboutPage() {
 							</span>
 						</h1>
 						<p className="text-lg md:text-xl text-white/60 leading-relaxed">
-							Kokonut Studio - bu sizning eng muhim kunlaringizni abadiy esdalik qiladigan professional video studiya
+							Creative Studio - bu sizning eng muhim kunlaringizni abadiy esdalik qiladigan professional video studiya
 						</p>
 					</motion.div>
 
@@ -59,7 +59,7 @@ export default function AboutPage() {
 							<h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Bizning Hikoyamiz</h2>
 							<div className="space-y-4 text-white/70 leading-relaxed">
 								<p>
-									2015-yilda tashkil etilgan Kokonut Studio O&apos;zbekistondagi eng yaxshi video ishlab chiqarish
+									2015-yilda tashkil etilgan Creative Studio O&apos;zbekistondagi eng yaxshi video ishlab chiqarish
 									studiyalaridan biriga aylandi. Biz har bir to&apos;y va bayramni noyob san&apos;at asariga aylantiramiz.
 								</p>
 								<p>

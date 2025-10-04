@@ -47,7 +47,6 @@ export default function Navbar() {
       }
       setIsMobileMenuOpen(false)
     } else if (pathname !== "/" && item.scrollTo) {
-      // If we're on a different page, navigate to home with hash
       window.location.href = `/#${item.scrollTo}`
     }
   }

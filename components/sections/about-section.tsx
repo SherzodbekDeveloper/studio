@@ -1,9 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
+import { Award, Camera, Heart, Users } from "lucide-react"
 import { useRef } from "react"
-import { Award, Heart, Camera, Users } from "lucide-react"
 
 const features = [
   {
@@ -74,7 +73,7 @@ export default function AboutSection() {
         >
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 font-display">Bizning Missiyamiz</h3>
           <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-            Kokonut Studio - bu faqat video studiya emas, bu sizning hayotingizdagi eng muhim lahzalarni abadiy saqlab
+            Creative Studio - bu faqat video studiya emas, bu sizning hayotingizdagi eng muhim lahzalarni abadiy saqlab
             qolish san&apos;ati. Biz har bir to&apos;y, har bir bayramni noyob hikoyaga aylantiramiz. Professional jamoamiz,
             zamonaviy uskunalarimiz va ijodiy yondashuvimiz bilan sizning orzularingizni amalga oshiramiz.
           </p>

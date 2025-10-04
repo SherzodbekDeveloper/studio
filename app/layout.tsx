@@ -22,7 +22,7 @@ const pacifico = Pacifico({
 })
 
 export const metadata: Metadata = {
-  title: "Kokonut Studio - To'y va Bayram Videolari",
+  title: "Creative Studio - To'y va Bayram Videolari",
   description: "Professional video production for weddings and celebrations",
 }
 

@@ -1,10 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Pacifico } from "next/font/google"
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Play, ArrowRight, Sparkles } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
+import { ArrowRight, Play, Sparkles } from "lucide-react"
+import { Pacifico } from "next/font/google"
 import Link from "next/link"
 
 const pacifico = Pacifico({
@@ -102,7 +102,7 @@ function FloatingParticle({ delay = 0, x = 0, y = 0 }: { delay?: number; x?: num
 }
 
 export default function HeroGeometric({
-  badge = "Kokonut UI",
+  badge = "Creative UI",
   title1 = "Elevate Your",
   title2 = "Digital Vision",
   description = "Crafting exceptional digital experiences",
