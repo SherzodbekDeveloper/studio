@@ -1,0 +1,185 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { useInView } from "framer-motion"
+import { useRef, useState, useEffect } from "react"
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react"
+import { Button } from "@/components/ui/button"
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Aziza va Sardor",
+    role: "To'y Mijozlari",
+    content:
+      "Creative Studio bizning to'yimizni haqiqiy kinoga aylantirdi! Har bir lahza shunday go'zal yozilganki, har safar ko'rganimizda ko'z yoshlarimiz to'kiladi.",
+    image: "/happy-couple-portrait.png",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Nilufar va Jasur",
+    role: "Love Story Mijozlari",
+    content:
+      "Love Story videomiz ajoyib chiqdi! Professional jamoa, zamonaviy uskunalar va eng muhimi - yurakdan ishlashdi. Hammaga tavsiya qilamiz!",
+    image: "/romantic-couple.png",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Madina va Otabek",
+    role: "To'y Mijozlari",
+    content:
+      "Eng yaxshi tanlov! Creative Studio jamoasi juda professional va samimiy. Bizning to'yimiz videosi barcha kutganlarimizdan ham zo'r chiqdi!",
+    image: "/wedding-couple-smiling.jpg",
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: "Sevara va Bekzod",
+    role: "Nikoh Marosimi",
+    content:
+      "Nikoh marosimimizni shunday chiroyli yozib olishganki, hamma do'stlarimiz hayron qolishdi. Sifat va xizmat darajasi a'lo!",
+    image: "/traditional-wedding-couple.jpg",
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: "Dilnoza va Rustam",
+    role: "To'y Mijozlari",
+    content:
+      "Ajoyib tajriba! Jamoa juda professional, video sifati yuqori darajada. To'yimizni abadiy esda qoladigan qilib olishdi.",
+    image: "/elegant-couple.jpg",
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: "Kamola va Sherzod",
+    role: "Love Story",
+    content:
+      "Bizning sevgi hikoyamizni shunday go'zal tasvirlab berishganki, har safar ko'rganimizda o'sha kunlarni qayta yashayapmiz. Rahmat!",
+    image: "/young-couple-love.jpg",
+    rating: 5,
+  },
+]
+
+export default function TestimonialsSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 3 >= testimonials.length ? 0 : prev + 3))
+  }
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 3 < 0 ? Math.max(0, testimonials.length - 3) : prev - 3))
+  }
+
+  useEffect(() => {
+    const interval = setInterval(nextTestimonial, 6000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + 3)
+
+  return (
+    <div className="relative py-24 md:py-32 bg-[#030303] overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/[0.02] to-transparent" />
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10" ref={ref}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 font-display text-balance">
+            Mijozlar Fikri
+          </h2>
+          <p className="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto text-balance">
+            Bizning baxtli mijozlarimiz nima deyishadi
+          </p>
+        </motion.div>
+
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {visibleTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex flex-col h-full"
+              >
+                <div className="flex flex-col h-full p-6 md:p-8 rounded-2xl bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-white/10 backdrop-blur-sm">
+                  <Quote className="w-10 h-10 text-indigo-400 mb-4" />
+
+                  <div className="flex-1 mb-6">
+                    <p className="text-base md:text-lg text-white/80 leading-relaxed line-clamp-6">
+                      {testimonial.content}
+                    </p>
+                  </div>
+
+                  {/* Rating */}
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: testimonial.rating }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+
+                  {/* Author info */}
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                    <img
+                      src={testimonial.image || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover border-2 border-white/20"
+                    />
+                    <div>
+                      <div className="text-base font-bold text-white font-display">{testimonial.name}</div>
+                      <div className="text-sm text-white/50">{testimonial.role}</div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-4">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={prevTestimonial}
+              disabled={currentIndex === 0}
+              className="rounded-full border-white/20 bg-white/5 hover:bg-white/10 text-white disabled:opacity-30"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Button>
+
+            <div className="flex gap-2">
+              {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index * 3)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    Math.floor(currentIndex / 3) === index ? "bg-white w-8" : "bg-white/30 w-2"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={nextTestimonial}
+              disabled={currentIndex + 3 >= testimonials.length}
+              className="rounded-full border-white/20 bg-white/5 hover:bg-white/10 text-white disabled:opacity-30"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
