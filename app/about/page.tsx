@@ -59,17 +59,17 @@ export default function AboutPage() {
 							<h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Bizning Hikoyamiz</h2>
 							<div className="space-y-4 text-white/70 leading-relaxed">
 								<p>
-									2015-yilda tashkil etilgan Kokonut Studio O'zbekistondagi eng yaxshi video ishlab chiqarish
-									studiyalaridan biriga aylandi. Biz har bir to'y va bayramni noyob san'at asariga aylantiramiz.
+									2015-yilda tashkil etilgan Kokonut Studio O&apos;zbekistondagi eng yaxshi video ishlab chiqarish
+									studiyalaridan biriga aylandi. Biz har bir to&apos;y va bayramni noyob san&apos;at asariga aylantiramiz.
 								</p>
 								<p>
-									Bizning jamoamiz professional operatorlar, rejissyorlar va montajchilardan iborat bo'lib, ular sizning
-									eng muhim lahzalaringizni eng go'zal tarzda yozib olishadi. Biz zamonaviy texnologiyalar va ijodiy
-									yondashuvni birlashtirib, har bir loyihaga alohida e'tibor beramiz.
+									Bizning jamoamiz professional operatorlar, rejissyorlar va montajchilardan iborat bo&apos;lib, ular sizning
+									eng muhim lahzalaringizni eng go&apos;zal tarzda yozib olishadi. Biz zamonaviy texnologiyalar va ijodiy
+									yondashuvni birlashtirib, har bir loyihaga alohida e&apos;tibor beramiz.
 								</p>
 								<p>
-									Bizning maqsadimiz - sizning baxtli kunlaringizni abadiy saqlab qolish va har safar ko'rganingizda
-									o'sha his-tuyg'ularni qayta boshdan kechirishingiz uchun imkoniyat yaratish.
+									Bizning maqsadimiz - sizning baxtli kunlaringizni abadiy saqlab qolish va har safar ko&apos;rganingizda
+									o&apos;sha his-tuyg'ularni qayta boshdan kechirishingiz uchun imkoniyat yaratish.
 								</p>
 							</div>
 						</div>

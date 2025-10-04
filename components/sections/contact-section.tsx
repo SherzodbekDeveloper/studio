@@ -38,10 +38,10 @@ export default function ContactSection() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 font-display text-balance">
-            Biz Bilan Bog'laning
+            Biz Bilan Bog&apos;laning
           </h2>
           <p className="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto text-balance">
-            Savollaringiz bormi? Biz bilan bog'laning va biz sizga yordam beramiz
+            Savollaringiz bormi? Biz bilan bog&apos;laning va biz sizga yordam beramiz
           </p>
         </motion.div>
 
@@ -51,7 +51,7 @@ export default function ContactSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-3xl font-bold text-white mb-8 font-display">Aloqa Ma'lumotlari</h3>
+            <h3 className="text-3xl font-bold text-white mb-8 font-display">Aloqa Ma&apos;lumotlari</h3>
 
             <div className="space-y-6 mb-12">
               <div className="flex items-start gap-4">
@@ -84,7 +84,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-white/50 mb-1">Manzil</div>
-                  <div className="text-xl text-white">Toshkent, Chilonzor tumani, Bunyodkor ko'chasi 12</div>
+                  <div className="text-xl text-white">Toshkent, Chilonzor tumani, Bunyodkor ko&apos;chasi 12</div>
                 </div>
               </div>
             </div>

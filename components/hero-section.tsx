@@ -120,7 +120,7 @@ export default function HeroGeometric({
       transition: {
         duration: 0.6,
         delay: i * 0.2,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: [0.25, 0.1, 0.25, 1] as const,
       },
     }),
   }
@@ -224,7 +224,7 @@ export default function HeroGeometric({
                 size="lg"
                 className="group bg-white text-black hover:bg-white/90 px-8 py-6 text-lg font-medium rounded-full"
               >
-                Loyihalarni Ko'rish
+                Loyihalarni Ko&apos;rish
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
@@ -235,7 +235,7 @@ export default function HeroGeometric({
                 className="group border-2 border-white/20 bg-white/5 hover:bg-white/10 text-white px-8 py-6 text-lg font-medium rounded-full backdrop-blur-sm"
               >
                 <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                Biz Bilan Bog'laning
+                Biz Bilan Bog&apos;laning
               </Button>
             </Link>
           </motion.div>

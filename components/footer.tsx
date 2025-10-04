@@ -108,7 +108,7 @@ export default function Footer() {
           <div>
             <h4 className="font-space-grotesk text-lg font-semibold text-white mb-6">Xizmatlarimiz</h4>
             <ul className="space-y-3">
-              <li className="text-gray-400 text-sm">To'y videosuratlari</li>
+              <li className="text-gray-400 text-sm">To&apos;y videosuratlari</li>
               <li className="text-gray-400 text-sm">Professional fotosurat</li>
               <li className="text-gray-400 text-sm">Nikoh marosimlari</li>
               <li className="text-gray-400 text-sm">Bayram tadbirlari</li>
@@ -134,7 +134,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-gray-400 text-sm">
                 <MapPin className="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" />
-                <div>Toshkent shahar, Chilonzor tumani, Bunyodkor ko'chasi 12</div>
+                <div>Toshkent shahar, Chilonzor tumani, Bunyodkor ko&apos;chasi 12</div>
               </li>
             </ul>
           </div>

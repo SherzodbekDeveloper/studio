@@ -45,7 +45,7 @@ export default function AboutSection() {
         >
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 font-display text-balance">Biz Haqimizda</h2>
           <p className="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto text-balance">
-            2016 yildan beri O'zbekistonda eng yaxshi to'y va bayram videolarini yaratib kelmoqdamiz. Bizning maqsadimiz
+            2016 yildan beri O&apos;zbekistonda eng yaxshi to&apos;y va bayram videolarini yaratib kelmoqdamiz. Bizning maqsadimiz
             - har bir lahzani abadiy esdalik qilish.
           </p>
         </motion.div>
@@ -75,7 +75,7 @@ export default function AboutSection() {
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 font-display">Bizning Missiyamiz</h3>
           <p className="text-lg md:text-xl text-white/70 leading-relaxed">
             Kokonut Studio - bu faqat video studiya emas, bu sizning hayotingizdagi eng muhim lahzalarni abadiy saqlab
-            qolish san'ati. Biz har bir to'y, har bir bayramni noyob hikoyaga aylantiramiz. Professional jamoamiz,
+            qolish san&apos;ati. Biz har bir to&apos;y, har bir bayramni noyob hikoyaga aylantiramiz. Professional jamoamiz,
             zamonaviy uskunalarimiz va ijodiy yondashuvimiz bilan sizning orzularingizni amalga oshiramiz.
           </p>
         </motion.div>

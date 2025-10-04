@@ -54,11 +54,11 @@ export default function ContactPage() {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white to-rose-300 font-pacifico">
-                Bog'lanish
+                Bog&apos;lanish
               </span>
             </h1>
             <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto">
-              Sizning muhim kunlaringizni birga yaratish uchun biz bilan bog'laning
+              Sizning muhim kunlaringizni birga yaratish uchun biz bilan bog&apos;laning
             </p>
           </motion.div>
 
@@ -66,7 +66,7 @@ export default function ContactPage() {
             {/* Contact Info */}
             <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible" className="space-y-6">
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Aloqa Ma'lumotlari</h2>
+                <h2 className="text-2xl font-bold text-white mb-6">Aloqa Ma&apos;lumotlari</h2>
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <a
