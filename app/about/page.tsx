@@ -69,7 +69,7 @@ export default function AboutPage() {
 								</p>
 								<p>
 									Bizning maqsadimiz - sizning baxtli kunlaringizni abadiy saqlab qolish va har safar ko&apos;rganingizda
-									o&apos;sha his-tuyg'ularni qayta boshdan kechirishingiz uchun imkoniyat yaratish.
+									o&apos;sha his-tuyg&apos;ularni qayta boshdan kechirishingiz uchun imkoniyat yaratish.
 								</p>
 							</div>
 						</div>

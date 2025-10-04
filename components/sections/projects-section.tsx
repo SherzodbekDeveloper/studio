@@ -72,7 +72,7 @@ export default function ProjectsSection() {
             Bizning Loyihalar
           </h2>
           <p className="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto text-balance">
-            Eng so'nggi ishlarimiz bilan tanishing. Har bir loyiha - bu noyob hikoya.
+            Eng so&apos;nggi ishlarimiz bilan tanishing. Har bir loyiha - bu noyob hikoya.
           </p>
         </motion.div>
 
@@ -125,7 +125,7 @@ export default function ProjectsSection() {
               size="lg"
               className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-6 text-lg rounded-full"
             >
-              Barcha Loyihalarni Ko'rish
+              Barcha Loyihalarni Ko&apos;rish
             </Button>
           </Link>
         </div>
