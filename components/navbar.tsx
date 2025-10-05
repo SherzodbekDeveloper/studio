@@ -11,11 +11,10 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { name: "Bosh sahifa", href: "/", scrollTo: "hero" },
-  { name: "Biz haqimizda", href: "/about", scrollTo: "about" },
-  { name: "Xizmatlar", href: "/services", scrollTo: "services" },
-  { name: "Loyihalar", href: "/projects", scrollTo: "projects" },
-  { name: "Jamoa", href: "/team", scrollTo: "team" },
-  { name: "Aloqa", href: "/contact", scrollTo: "contact" },
+  { name: "Biz haqimizda", href: "#about", scrollTo: "about" },
+  { name: "Xizmatlar", href: "#services", scrollTo: "services" },
+  { name: "Jamoa", href: "#team", scrollTo: "team" },
+  { name: "Aloqa", href: "#contact", scrollTo: "contact" },
 ]
 
 export default function Navbar() {
@@ -82,6 +81,7 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
+          
           </div>
 
           <button

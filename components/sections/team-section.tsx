@@ -1,7 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { Instagram, Facebook, Youtube, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -86,24 +85,26 @@ export default function TeamSection() {
   const visibleTeam = team.slice(currentIndex, currentIndex + 3)
 
   return (
-    <div id="team" className="relative py-24 md:py-32 bg-[#030303] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-rose-500/[0.02] to-transparent" />
+    <div id="team" className="relative py-24 md:py-32 bg-gray-100 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-rose-100/40 to-transparent" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10" ref={ref}>
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 font-display text-balance">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 font-display text-balance">
             Bizning Jamoa
           </h2>
-          <p className="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto text-balance">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto text-balance">
             Professional mutaxassislar jamoasi sizning xizmatizda
           </p>
         </motion.div>
 
+        {/* Carousel */}
         <div className="relative max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-6">
             {visibleTeam.map((member, index) => (
@@ -114,56 +115,60 @@ export default function TeamSection() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="relative aspect-square rounded-2xl overflow-hidden mb-4 bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-white/10">
+                {/* Card */}
+                <div className="relative aspect-square rounded-2xl overflow-hidden mb-4 bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
                   <img
                     src={member.image || "/placeholder.svg"}
                     alt={member.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
+                  {/* Social icons */}
                   <div className="absolute bottom-4 left-4 right-4 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {member.social.instagram && (
                       <a
                         href={member.social.instagram}
-                        className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors"
+                        className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors shadow-md"
                       >
-                        <Instagram className="w-5 h-5 text-white" />
+                        <Instagram className="w-5 h-5 text-[#E11D48]" />
                       </a>
                     )}
                     {member.social.facebook && (
                       <a
                         href={member.social.facebook}
-                        className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors"
+                        className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors shadow-md"
                       >
-                        <Facebook className="w-5 h-5 text-white" />
+                        <Facebook className="w-5 h-5 text-[#E11D48]" />
                       </a>
                     )}
                     {member.social.youtube && (
                       <a
                         href={member.social.youtube}
-                        className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors"
+                        className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors shadow-md"
                       >
-                        <Youtube className="w-5 h-5 text-white" />
+                        <Youtube className="w-5 h-5 text-[#E11D48]" />
                       </a>
                     )}
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-1 font-display">{member.name}</h3>
-                <div className="text-indigo-400 mb-2">{member.role}</div>
-                <p className="text-sm text-white/50">{member.bio}</p>
+                {/* Info */}
+                <h3 className="text-xl font-bold text-gray-900 mb-1 font-display">{member.name}</h3>
+                <div className="text-[#E11D48] font-medium mb-2">{member.role}</div>
+                <p className="text-sm text-gray-600">{member.bio}</p>
               </motion.div>
             ))}
           </div>
 
+          {/* Controls */}
           <div className="flex items-center justify-center gap-4 mt-10">
             <Button
               variant="outline"
               size="icon"
               onClick={prevSlide}
               disabled={currentIndex === 0}
-              className="rounded-full border-white/20 bg-white/5 hover:bg-white/10 text-white disabled:opacity-30"
+              className="rounded-full border-gray-300 bg-white hover:bg-gray-100 text-[#E11D48] disabled:opacity-40 shadow-sm"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -174,7 +179,9 @@ export default function TeamSection() {
                   key={index}
                   onClick={() => setCurrentIndex(index * 3)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    Math.floor(currentIndex / 3) === index ? "bg-white w-8" : "bg-white/30 w-2"
+                    Math.floor(currentIndex / 3) === index
+                      ? "bg-[#E11D48] w-8"
+                      : "bg-[#E11D48]/30 w-2"
                   }`}
                 />
               ))}
@@ -185,7 +192,7 @@ export default function TeamSection() {
               size="icon"
               onClick={nextSlide}
               disabled={currentIndex + 3 >= team.length}
-              className="rounded-full border-white/20 bg-white/5 hover:bg-white/10 text-white disabled:opacity-30"
+              className="rounded-full border-gray-300 bg-white hover:bg-gray-100 text-[#E11D48] disabled:opacity-40 shadow-sm"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>

@@ -61,6 +61,33 @@ const testimonials = [
     image: "/young-couple-love.jpg",
     rating: 5,
   },
+  {
+    id: 7,
+    name: "Sevara va Bekzod",
+    role: "Nikoh Marosimi",
+    content:
+      "Nikoh marosimimizni shunday chiroyli yozib olishganki, hamma do'stlarimiz hayron qolishdi. Sifat va xizmat darajasi a'lo!",
+    image: "/traditional-wedding-couple.jpg",
+    rating: 5,
+  },
+  {
+    id: 8,
+    name: "Dilnoza va Rustam",
+    role: "To'y Mijozlari",
+    content:
+      "Ajoyib tajriba! Jamoa juda professional, video sifati yuqori darajada. To'yimizni abadiy esda qoladigan qilib olishdi.",
+    image: "/elegant-couple.jpg",
+    rating: 5,
+  },
+  {
+    id: 9,
+    name: "Kamola va Sherzod",
+    role: "Love Story",
+    content:
+      "Bizning sevgi hikoyamizni shunday go'zal tasvirlab berishganki, har safar ko'rganimizda o'sha kunlarni qayta yashayapmiz. Rahmat!",
+    image: "/young-couple-love.jpg",
+    rating: 5,
+  },
 ]
 
 export default function TestimonialsSection() {
@@ -84,8 +111,8 @@ export default function TestimonialsSection() {
   const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + 3)
 
   return (
-    <div className="relative py-24 md:py-32 bg-[#030303] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/[0.02] to-transparent" />
+    <div className="relative py-24 md:py-32 bg-white overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-100/30 to-transparent" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10" ref={ref}>
         <motion.div
@@ -94,10 +121,10 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 font-display text-balance">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 font-display text-balance">
             Mijozlar Fikri
           </h2>
-          <p className="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto text-balance">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto text-balance">
             Bizning baxtli mijozlarimiz nima deyishadi
           </p>
         </motion.div>
@@ -112,32 +139,30 @@ export default function TestimonialsSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex flex-col h-full"
               >
-                <div className="flex flex-col h-full p-6 md:p-8 rounded-2xl bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-white/10 backdrop-blur-sm">
-                  <Quote className="w-10 h-10 text-indigo-400 mb-4" />
+                <div className="flex flex-col h-full p-6 md:p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+                  <Quote className="w-10 h-10 text-[#E11D48] mb-4" />
 
                   <div className="flex-1 mb-6">
-                    <p className="text-base md:text-lg text-white/80 leading-relaxed line-clamp-6">
+                    <p className="text-base md:text-lg text-gray-700 leading-relaxed line-clamp-6">
                       {testimonial.content}
                     </p>
                   </div>
 
-                  {/* Rating */}
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
 
-                  {/* Author info */}
-                  <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                  <div className="flex items-center gap-3 pt-4 border-t border-gray-200">
                     <img
                       src={testimonial.image || "/placeholder.svg"}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-white/20"
+                      className="w-12 h-12 rounded-full object-cover border-2 border-gray-100"
                     />
                     <div>
-                      <div className="text-base font-bold text-white font-display">{testimonial.name}</div>
-                      <div className="text-sm text-white/50">{testimonial.role}</div>
+                      <div className="text-base font-bold text-gray-900 font-display">{testimonial.name}</div>
+                      <div className="text-sm text-gray-500">{testimonial.role}</div>
                     </div>
                   </div>
                 </div>
@@ -151,7 +176,7 @@ export default function TestimonialsSection() {
               size="icon"
               onClick={prevTestimonial}
               disabled={currentIndex === 0}
-              className="rounded-full border-white/20 bg-white/5 hover:bg-white/10 text-white disabled:opacity-30"
+              className="rounded-full border-gray-300 bg-gray-100 hover:bg-gray-200 text-gray-700 disabled:opacity-40"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -162,7 +187,7 @@ export default function TestimonialsSection() {
                   key={index}
                   onClick={() => setCurrentIndex(index * 3)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    Math.floor(currentIndex / 3) === index ? "bg-white w-8" : "bg-white/30 w-2"
+                    Math.floor(currentIndex / 3) === index ? "bg-gray-900 w-8" : "bg-gray-300 w-2"
                   }`}
                 />
               ))}
@@ -173,7 +198,7 @@ export default function TestimonialsSection() {
               size="icon"
               onClick={nextTestimonial}
               disabled={currentIndex + 3 >= testimonials.length}
-              className="rounded-full border-white/20 bg-white/5 hover:bg-white/10 text-white disabled:opacity-30"
+              className="rounded-full border-gray-300 bg-gray-100 hover:bg-gray-200 text-gray-700 disabled:opacity-40"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>

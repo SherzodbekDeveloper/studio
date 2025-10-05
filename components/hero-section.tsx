@@ -1,11 +1,12 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
-import { ArrowRight, Play, Sparkles } from "lucide-react"
 import { Pacifico } from "next/font/google"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Play, ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
+import { useEffect, useState } from 'react'
 
 const pacifico = Pacifico({
   subsets: ["latin"],
@@ -102,12 +103,11 @@ function FloatingParticle({ delay = 0, x = 0, y = 0 }: { delay?: number; x?: num
 }
 
 export default function HeroGeometric({
-  badge = "Creative UI",
+
   title1 = "Elevate Your",
   title2 = "Digital Vision",
   description = "Crafting exceptional digital experiences",
 }: {
-  badge?: string
   title1?: string
   title2?: string
   description?: string
@@ -124,13 +124,21 @@ export default function HeroGeometric({
       },
     }),
   }
+  const [particles, setParticles] = useState<{ x: number; y: number }[]>([])
+
+  useEffect(() => {
+    setParticles(Array.from({ length: 20 }).map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+    })))
+  }, [])
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303]">
+    <div className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden bg-[#030303]" suppressHydrationWarning>
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
 
-      {Array.from({ length: 20 }).map((_, i) => (
-        <FloatingParticle key={i} delay={i * 0.3} x={Math.random() * 100} y={Math.random() * 100} />
+      {particles.map((p, i) => (
+        <FloatingParticle key={i} delay={i * 0.3} x={p.x} y={p.y} />
       ))}
 
       <div className="absolute inset-0 overflow-hidden">
@@ -182,15 +190,9 @@ export default function HeroGeometric({
 
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <motion.div custom={0} variants={fadeUpVariants} initial="hidden" animate="visible" className="mb-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-indigo-300" />
-              <span className="text-sm text-white/80 font-medium">{badge}</span>
-            </div>
-          </motion.div>
 
           <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-6 md:mb-8 tracking-tight font-display">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 tracking-tight font-display">
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80 text-balance">
                 {title1}
               </span>
@@ -240,26 +242,7 @@ export default function HeroGeometric({
             </Link>
           </motion.div>
 
-          <motion.div
-            custom={4}
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            className="mt-20 grid grid-cols-3 gap-8 max-w-3xl mx-auto"
-          >
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2 font-display">500+</div>
-              <div className="text-sm md:text-base text-white/50">Baxtli Juftliklar</div>
-            </div>
-            <div className="text-center border-x border-white/10">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2 font-display">8+</div>
-              <div className="text-sm md:text-base text-white/50">Yillik Tajriba</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2 font-display">50+</div>
-              <div className="text-sm md:text-base text-white/50">Mukofotlar</div>
-            </div>
-          </motion.div>
+          
         </div>
       </div>
 

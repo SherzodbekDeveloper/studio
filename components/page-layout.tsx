@@ -64,7 +64,7 @@ function ElegantShape({
 
 export default function PageLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative min-h-screen w-full bg-[#030303] pt-16 md:pt-20">
+    <div className="relative min-h-screen w-full bg-[#030303] pt-16 md:pt-20" suppressHydrationWarning>
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
 
@@ -99,7 +99,7 @@ export default function PageLayout({ children }: { children: React.ReactNode }) 
       </div>
 
       {/* Content */}
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10" suppressHydrationWarning>{children}</div>
 
       {/* Bottom Gradient */}
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#030303] to-transparent pointer-events-none" />
