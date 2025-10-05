@@ -180,13 +180,16 @@ export default function ContactSection() {
                 />
               </div>
 
+
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-gradient-to-r from-indigo-500 to-rose-500 hover:from-indigo-600 hover:to-rose-600 text-white h-12 text-lg font-medium"
+                className="group w-full relative overflow-hidden bg-[#E11D48] hover:bg-[#BE123C] text-white px-8 py-6 text-base md:text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 Xabar yuborish
-                <Send className="ml-2 w-5 h-5" />
+                <span />
+                <Send className=" w-5 h-5" />
               </Button>
             </form>
           </motion.div>

@@ -221,28 +221,19 @@ export default function HeroGeometric({
             animate="visible"
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link href="#projects">
-              <Button
-                size="lg"
-                className="group bg-white text-black hover:bg-white/90 px-8 py-6 text-lg font-medium rounded-full"
-              >
-                Loyihalarni Ko&apos;rish
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
             <Link href="#contact">
               <Button
                 size="lg"
-                variant="outline"
-                className="group border-2 border-white/20 bg-white/5 hover:bg-white/10 text-white px-8 py-6 text-lg font-medium rounded-full backdrop-blur-sm"
+                className="group relative overflow-hidden bg-[#E11D48] hover:bg-[#BE123C] text-white px-8 py-6 text-base md:text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                Biz Bilan Bog&apos;laning
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Jamoa bilan tanishish
+                <ArrowRight />
               </Button>
             </Link>
           </motion.div>
 
-          
+
         </div>
       </div>
 
