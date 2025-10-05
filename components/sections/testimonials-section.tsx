@@ -111,7 +111,7 @@ export default function TestimonialsSection() {
   const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + 3)
 
   return (
-    <div className="relative py-24 md:py-32 bg-white overflow-hidden">
+    <div className="relative py-24 md:py-32 bg-gray-100 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-100/30 to-transparent" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10" ref={ref}>

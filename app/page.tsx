@@ -24,12 +24,12 @@ export default function HomePage() {
         <ServicesSection />
       </section>
 
-      <section id="testimonials">
-        <TestimonialsSection />
-      </section>
 
       <section id="team">
         <TeamSection />
+      </section>
+      <section id="testimonials">
+        <TestimonialsSection />
       </section>
 
       <section id="contact">
