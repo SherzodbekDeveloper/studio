@@ -227,7 +227,7 @@ export default function HeroGeometric({
                 className="group relative overflow-hidden bg-[#E11D48] hover:bg-[#BE123C] text-white px-8 py-6 text-base md:text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Jamoa bilan tanishish
+                Hoziroq bog&apos;lanish
                 <ArrowRight />
               </Button>
             </Link>
