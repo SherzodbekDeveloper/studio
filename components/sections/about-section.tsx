@@ -33,7 +33,7 @@ export default function AboutSection() {
       <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-row gap-10">
         <div className="flex flex-col gap-12 w-1/2">
           <div className="flex items-start gap-4 ">
-            <div className="w-16 h-50 bg-gradient-to-b from-[#E11D48] to-gray-100"></div>
+            <div className="w-12 h-50 bg-gradient-to-b from-[#E11D48] to-white"></div>
             <h1 className="text-black/80 text-4xl md:text-5xl font-bold leading-tight">
               Biz haqimizda ko&apos;proq bilib oling. Sifat, ishonch va
               <span className="text-[#E11D48]"> ijodkorlik.</span>
