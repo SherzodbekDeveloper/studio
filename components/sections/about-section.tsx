@@ -39,8 +39,6 @@ export default function AboutSection() {
               <span className="text-[#E11D48]"> ijodkorlik.</span>
             </h1>
 
-
-
           </div>
           <div className="">
             <img className='rounded-2xl max-w-[400pxn]' src="https://www.aces.edu/wp-content/uploads/2021/11/GettyImages-875599880-scaled.jpg" alt="" />
