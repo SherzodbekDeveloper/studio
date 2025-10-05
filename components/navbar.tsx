@@ -1,13 +1,8 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { cn } from "@/lib/utils"
 
 const navItems = [
   { name: "Bosh sahifa", href: "/", scrollTo: "hero" },
@@ -20,19 +15,35 @@ const navItems = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
+      
+      const sections = navItems.map(item => item.scrollTo).filter(Boolean)
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
     }
+    
     window.addEventListener("scroll", handleScroll)
+    handleScroll() // Initial check
+    
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: (typeof navItems)[0]) => {
-    if (pathname === "/" && item.scrollTo) {
-      e.preventDefault()
+  const handleNavClick = (e, item) => {
+    e.preventDefault()
+    
+    if (item.scrollTo) {
       const element = document.getElementById(item.scrollTo)
       if (element) {
         const offset = 80
@@ -44,10 +55,14 @@ export default function Navbar() {
           behavior: "smooth",
         })
       }
-      setIsMobileMenuOpen(false)
-    } else if (pathname !== "/" && item.scrollTo) {
-      window.location.href = `/#${item.scrollTo}`
     }
+    
+    setIsMobileMenuOpen(false)
+  }
+
+  const isActive = (item) => {
+    if (item.scrollTo === "hero" && !isScrolled) return true
+    return activeSection === item.scrollTo
   }
 
   return (
@@ -55,35 +70,42 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-[#030303]/80 backdrop-blur-xl border-b-white" : "bg-transparent",
-      )}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-[#030303]/80 backdrop-blur-xl border-b border-white/10" : "bg-transparent"
+      }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl md:text-3xl font-pacifico bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white to-rose-300">
+          {/* Logo */}
+          <a 
+            href="/" 
+            onClick={(e) => handleNavClick(e, navItems[0])}
+            className="flex items-center space-x-2 cursor-pointer"
+          >
+            <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white to-rose-300">
               Creative Studio
             </span>
-          </Link>
+          </a>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.href}
                 href={item.href}
-                className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
-                  pathname === item.href ? "text-white bg-white/10" : "text-white/60 hover:text-white hover:bg-white/5",
-                )}
+                onClick={(e) => handleNavClick(e, item)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
+                  isActive(item)
+                    ? "text-white bg-white/10"
+                    : "text-white/60 hover:text-white hover:bg-white/5"
+                }`}
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
-          
           </div>
 
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 text-white/80 hover:text-white transition-colors"
@@ -94,6 +116,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -105,22 +128,18 @@ export default function Navbar() {
           >
             <div className="container mx-auto px-4 py-4 space-y-2">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.href}
                   href={item.href}
-                  onClick={(e) => {
-                    handleNavClick(e, item)
-                    setIsMobileMenuOpen(false)
-                  }}
-                  className={cn(
-                    "block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200",
-                    pathname === item.href
+                  onClick={(e) => handleNavClick(e, item)}
+                  className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
+                    isActive(item)
                       ? "text-white bg-white/10"
-                      : "text-white/60 hover:text-white hover:bg-white/5",
-                  )}
+                      : "text-white/60 hover:text-white hover:bg-white/5"
+                  }`}
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
             </div>
           </motion.div>
