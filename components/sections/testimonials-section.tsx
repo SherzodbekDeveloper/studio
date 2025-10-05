@@ -119,17 +119,24 @@ export default function TestimonialsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 font-display text-balance">
-            Mijozlar Fikri
-          </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto text-balance">
-            Bizning baxtli mijozlarimiz nima deyishadi
-          </p>
+          <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 font-display leading-tight max-w-[700px]">
+              Biz haqimizda mijozlarimiz <br className="hidden md:block" />
+              <span className="text-[#E11D48]">nimalar deyishadi</span>
+
+            </h2>
+
+            <p className="text-lg md:text-2xl text-end text-gray-600 max-w-[550px]">
+              Har bir loyiha — bu biz uchun nafaqat ish, balki ishonchdir.
+              Bizning mijozlarimiz fikrlari bizni har kuni yanada yaxshiroq bo‘lishga undaydi.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="max-w-7xl mx-auto">
+
+        <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-6 mb-10">
             {visibleTestimonials.map((testimonial, index) => (
               <motion.div
@@ -186,9 +193,8 @@ export default function TestimonialsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index * 3)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    Math.floor(currentIndex / 3) === index ? "bg-gray-900 w-8" : "bg-gray-300 w-2"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${Math.floor(currentIndex / 3) === index ? "bg-gray-900 w-8" : "bg-gray-300 w-2"
+                    }`}
                 />
               ))}
             </div>

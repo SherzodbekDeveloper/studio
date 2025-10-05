@@ -89,22 +89,22 @@ export default function TeamSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-rose-100/40 to-transparent" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10" ref={ref}>
-       <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={isInView ? { opacity: 1, y: 0 } : {}}
-  transition={{ duration: 0.6 }}
-  className="text-center mb-16"
->
-  <div className="flex items-start justify-between">
-    <h2 className="text-5xl md:text-7xl lg:text-5xl font-bold text-gray-900 font-display text-start max-w-[600px] w-full">
-      Bu ishni amalga oshirayotgan <span className="text-[#E11D48]">iste’dodli jamoamiz</span> bilan tanishing
-    </h2>
-   <p className="text-xl md:text-2xl text-gray-600 text-end max-w-[600px] w-full">
-  Tajribali mutaxassislarimiz siz uchun bir jamoa bo‘lib ishlaydi — har bir loyiha biz uchun mas’uliyat va ilhom manbai.
-</p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="flex items-start justify-between">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 font-display text-start max-w-[600px] w-full">
+              Bu ishni amalga oshirayotgan <span className="text-[#E11D48]">iste’dodli jamoamiz</span> bilan tanishing
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-600 text-end max-w-[600px] w-full">
+              Tajribali mutaxassislarimiz siz uchun bir jamoa bo‘lib ishlaydi — har bir loyiha biz uchun mas’uliyat va ilhom manbai.
+            </p>
 
-  </div>
-</motion.div>
+          </div>
+        </motion.div>
 
 
         <div className="relative container mx-auto ">
