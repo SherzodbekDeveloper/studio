@@ -110,6 +110,13 @@ export interface Client {
   videos: string[]
 }
 
+declare global {
+  interface Window {
+    YT: any
+    onYouTubeIframeAPIReady: () => void
+  }
+}
+
 export default function LoginPage() {
   const [particles, setParticles] = useState<{ x: number; y: number }[]>([])
   const [code, setCode] = useState(Array(6).fill(""))
@@ -118,6 +125,9 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [shake, setShake] = useState(false)
   const inputsRef = useRef<(HTMLInputElement | null)[]>([])
+
+  const youtubePlayersRef = useRef<any[]>([])
+  const [youtubeApiReady, setYoutubeApiReady] = useState(false)
 
   useEffect(() => {
     const savedClientId = Cookies.get("client_id")
@@ -133,6 +143,61 @@ export default function LoginPage() {
       })
     }
   }, [])
+
+  useEffect(() => {
+    if (!window.YT) {
+      const tag = document.createElement("script")
+      tag.src = "https://www.youtube.com/iframe_api"
+      const firstScriptTag = document.getElementsByTagName("script")[0]
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag)
+
+      window.onYouTubeIframeAPIReady = () => {
+        setYoutubeApiReady(true)
+      }
+    } else {
+      setYoutubeApiReady(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!client || !youtubeApiReady || !window.YT) return
+
+    // Clear existing players
+    youtubePlayersRef.current = []
+
+    // Small delay to ensure iframes are rendered
+    const timer = setTimeout(() => {
+      const youtubeIframes = document.querySelectorAll("iframe[data-youtube-player]")
+
+      youtubeIframes.forEach((iframe, index) => {
+        const player = new window.YT.Player(iframe, {
+          events: {
+            onStateChange: (event: any) => {
+              // When video starts playing (state === 1)
+              if (event.data === window.YT.PlayerState.PLAYING) {
+                // Pause all other YouTube videos
+                youtubePlayersRef.current.forEach((otherPlayer, otherIndex) => {
+                  if (otherIndex !== index && otherPlayer) {
+                    try {
+                      otherPlayer.pauseVideo()
+                    } catch (e) {
+                      console.error("Error pausing video:", e)
+                    }
+                  }
+                })
+              }
+            },
+          },
+        })
+        youtubePlayersRef.current[index] = player
+      })
+    }, 500)
+
+    return () => {
+      clearTimeout(timer)
+      youtubePlayersRef.current = []
+    }
+  }, [client, youtubeApiReady])
 
   const handleChange = (value: string, index: number) => {
     if (!/^\d*$/.test(value)) return
@@ -151,7 +216,7 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const clientId = code.join("")
-    if (clientId.length < 6) return setError("ID to‘liq emas!")
+    if (clientId.length < 6) return setError("ID to'liq emas!")
 
     setLoading(true)
     const clientData = await checkClientId(clientId)
@@ -172,6 +237,7 @@ export default function LoginPage() {
     setClient(null)
     setCode(Array(6).fill(""))
     setError("")
+    youtubePlayersRef.current = []
   }
 
   useEffect(() => {
@@ -186,7 +252,7 @@ export default function LoginPage() {
   if (loading && !client && code.every((c) => !c)) {
     return (
       <div className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden bg-[#030303]">
-        <Loader2 className='animate-spin text-[#E11D48]' />
+        <Loader2 className="animate-spin text-[#E11D48]" />
       </div>
     )
   }
@@ -271,7 +337,6 @@ export default function LoginPage() {
                   ref={(el) => {
                     inputsRef.current[i] = el
                   }}
-
                   type="text"
                   inputMode="numeric"
                   maxLength={1}
@@ -330,20 +395,16 @@ export default function LoginPage() {
 
                 let embedUrl = url
                 if (isYouTube) {
-                  embedUrl = url
-                    .replace("watch?v=", "embed/")
-                    .replace("youtu.be/", "www.youtube.com/embed/")
+                  const videoId = url.includes("watch?v=")
+                    ? url.split("watch?v=")[1]?.split("&")[0]
+                    : url.split("youtu.be/")[1]?.split("?")[0]
+                  embedUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`
                 }
 
-                const instagramEmbedUrl = isInstagram
-                  ? `${url.endsWith("/") ? url : url + "/"}embed`
-                  : ""
+                const instagramEmbedUrl = isInstagram ? `${url.endsWith("/") ? url : url + "/"}embed` : ""
 
                 return (
-                  <div
-                    key={i}
-                    className="w-full  mx-auto my-4 bg-white rounded-xl shadow-xl overflow-hidden"
-                  >
+                  <div key={i} className="w-full  mx-auto my-4 bg-white rounded-xl shadow-xl overflow-hidden">
                     {isInstagram ? (
                       <iframe
                         src={instagramEmbedUrl}
@@ -356,6 +417,8 @@ export default function LoginPage() {
                       ></iframe>
                     ) : isYouTube ? (
                       <iframe
+                        id={`youtube-player-${i}`}
+                        data-youtube-player
                         src={embedUrl}
                         className="w-full aspect-video rounded-lg border-none"
                         allowFullScreen
@@ -369,7 +432,7 @@ export default function LoginPage() {
                         className="w-full bg-black rounded-lg"
                         style={{ objectFit: "contain" }}
                       >
-                        Sizning brauzeringiz video tagini qo‘llab-quvvatlamaydi.
+                        Sizning brauzeringiz video tagini qo'llab-quvvatlamaydi.
                       </video>
                     )}
                   </div>
