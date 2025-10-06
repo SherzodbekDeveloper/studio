@@ -104,12 +104,18 @@ function FloatingParticle({ delay = 0, x = 0, y = 0 }: { delay?: number; x?: num
     />
   )
 }
+type Client = {
+  id: string
+  client_id: string
+  name: string
+  videos: string[]
+}
 
 export default function LoginPage() {
   const [particles, setParticles] = useState<{ x: number; y: number }[]>([])
   const [code, setCode] = useState(Array(6).fill(""))
   const [error, setError] = useState("")
-  const [client, setClient] = useState<any>(null)
+ const [client, setClient] = useState<Client | null>(null)
   const [loading, setLoading] = useState(false)
   const [shake, setShake] = useState(false)
   const inputsRef = useRef<(HTMLInputElement | null)[]>([])
