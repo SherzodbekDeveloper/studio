@@ -3,19 +3,12 @@
 import type React from "react"
 
 import { motion } from "framer-motion"
-import { Pacifico } from "next/font/google"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
 import { checkClientId } from "@/lib/checkCleintId"
 import Cookies from "js-cookie"
 import { Loader2, LogOut } from "lucide-react"
-
-const pacifico = Pacifico({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-pacifico",
-})
 
 function ElegantShape({
   className,
@@ -110,14 +103,41 @@ export interface Client {
   videos: string[]
 }
 
+interface YTPlayer {
+  pauseVideo: () => void
+  playVideo: () => void
+  stopVideo: () => void
+}
+
+interface YTPlayerEvent {
+  data: number
+  target: YTPlayer
+}
+
+interface YTPlayerState {
+  PLAYING: number
+  PAUSED: number
+  ENDED: number
+}
+
 declare global {
   interface Window {
-    YT: any
+    YT: {
+      Player: new (
+        element: HTMLElement | HTMLIFrameElement,
+        config: {
+          events?: {
+            onStateChange?: (event: YTPlayerEvent) => void
+          }
+        },
+      ) => YTPlayer
+      PlayerState: YTPlayerState
+    }
     onYouTubeIframeAPIReady: () => void
   }
 }
 
-export default function LoginPage() {
+export default function ClientPage() {
   const [particles, setParticles] = useState<{ x: number; y: number }[]>([])
   const [code, setCode] = useState(Array(6).fill(""))
   const [error, setError] = useState("")
@@ -126,7 +146,7 @@ export default function LoginPage() {
   const [shake, setShake] = useState(false)
   const inputsRef = useRef<(HTMLInputElement | null)[]>([])
 
-  const youtubePlayersRef = useRef<any[]>([])
+  const youtubePlayersRef = useRef<YTPlayer[]>([])
   const [youtubeApiReady, setYoutubeApiReady] = useState(false)
 
   useEffect(() => {
@@ -170,9 +190,9 @@ export default function LoginPage() {
       const youtubeIframes = document.querySelectorAll("iframe[data-youtube-player]")
 
       youtubeIframes.forEach((iframe, index) => {
-        const player = new window.YT.Player(iframe, {
+        const player = new window.YT.Player(iframe as HTMLIFrameElement, {
           events: {
-            onStateChange: (event: any) => {
+            onStateChange: (event: YTPlayerEvent) => {
               // When video starts playing (state === 1)
               if (event.data === window.YT.PlayerState.PLAYING) {
                 // Pause all other YouTube videos
@@ -432,7 +452,7 @@ export default function LoginPage() {
                         className="w-full bg-black rounded-lg"
                         style={{ objectFit: "contain" }}
                       >
-                        Sizning brauzeringiz video tagini qo'llab-quvvatlamaydi.
+                        Sizning brauzeringiz video tagini qo&apos;llab-quvvatlamaydi.
                       </video>
                     )}
                   </div>
