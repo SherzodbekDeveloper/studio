@@ -42,7 +42,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleNavClick = (e, item) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: { scrollTo?: string }) => {
     // Agar login yoki boshqa sahifa link bo‘lsa, to‘xtatma
     if (!item.scrollTo) return
 
@@ -64,10 +64,11 @@ export default function Navbar() {
   }
 
 
-  const isActive = (item) => {
+  const isActive = (item: { scrollTo?: string }) => {
     if (item.scrollTo === "hero" && !isScrolled) return true
     return activeSection === item.scrollTo
   }
+
 
   return (
     <motion.nav
@@ -95,8 +96,8 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${isActive(item)
-                    ? "text-white bg-white/10"
-                    : "text-white/60 hover:text-white hover:bg-white/5"
+                  ? "text-white bg-white/10"
+                  : "text-white/60 hover:text-white hover:bg-white/5"
                   }`}
               >
                 {item.name}
