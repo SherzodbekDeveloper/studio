@@ -104,7 +104,7 @@ function FloatingParticle({ delay = 0, x = 0, y = 0 }: { delay?: number; x?: num
     />
   )
 }
-export interface Client  {
+export interface Client {
   client_id: number
   name: string
   videos: string[]
@@ -114,7 +114,7 @@ export default function LoginPage() {
   const [particles, setParticles] = useState<{ x: number; y: number }[]>([])
   const [code, setCode] = useState(Array(6).fill(""))
   const [error, setError] = useState("")
- const [client, setClient] = useState<Client | null>(null)
+  const [client, setClient] = useState<Client | null>(null)
   const [loading, setLoading] = useState(false)
   const [shake, setShake] = useState(false)
   const inputsRef = useRef<(HTMLInputElement | null)[]>([])
@@ -186,7 +186,7 @@ export default function LoginPage() {
   if (loading && !client && code.every((c) => !c)) {
     return (
       <div className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden bg-[#030303]">
-       <Loader2 className='animate-spin text-[#E11D48]'/>
+        <Loader2 className='animate-spin text-[#E11D48]' />
       </div>
     )
   }
@@ -268,7 +268,10 @@ export default function LoginPage() {
               {code.map((num, i) => (
                 <input
                   key={i}
-                  ref={(el) => (inputsRef.current[i] = el)}
+                  ref={(el) => {
+                    inputsRef.current[i] = el
+                  }}
+
                   type="text"
                   inputMode="numeric"
                   maxLength={1}
