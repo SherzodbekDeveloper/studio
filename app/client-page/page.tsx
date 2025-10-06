@@ -104,9 +104,8 @@ function FloatingParticle({ delay = 0, x = 0, y = 0 }: { delay?: number; x?: num
     />
   )
 }
-type Client = {
-  id: string
-  client_id: string
+export interface Client  {
+  client_id: number
   name: string
   videos: string[]
 }
