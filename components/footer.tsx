@@ -25,30 +25,30 @@ export default function Footer() {
               Sizning eng muhim lahzalaringizni professional video va fotosuratlarga aylantiramiz.
             </p>
             <div className="flex gap-3">
-              <a
+              <Link
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 hover:bg-gradient-to-br hover:from-indigo-500/20 hover:to-purple-500/20 flex items-center justify-center transition-all duration-300 group"
               >
                 <Instagram className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 hover:bg-gradient-to-br hover:from-indigo-500/20 hover:to-purple-500/20 flex items-center justify-center transition-all duration-300 group"
               >
                 <Facebook className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 hover:bg-gradient-to-br hover:from-indigo-500/20 hover:to-purple-500/20 flex items-center justify-center transition-all duration-300 group"
               >
                 <Youtube className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              </a>
+              </Link>
             </div>
           </div>
 

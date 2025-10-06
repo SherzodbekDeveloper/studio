@@ -79,7 +79,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a
+          <Link
             href="/"
             onClick={(e) => handleNavClick(e, navItems[0])}
             className="flex items-center space-x-2 cursor-pointer"
@@ -87,11 +87,11 @@ export default function Navbar() {
             <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white to-rose-300">
               Creative Studio
             </span>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${isActive(item)
@@ -100,7 +100,7 @@ export default function Navbar() {
                   }`}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
 
             <Link href={'/client-page'}>
@@ -134,7 +134,7 @@ export default function Navbar() {
           >
             <div className="container mx-auto px-4 py-4 space-y-2">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item)}
@@ -144,7 +144,7 @@ export default function Navbar() {
                     }`}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           </motion.div>
