@@ -324,21 +324,57 @@ export default function LoginPage() {
               </Button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {client.videos?.map((url: string, i: number) => (
-                <div key={i} className="bg-black rounded-xl overflow-hidden shadow-2xl">
-                  <iframe
-                    width="100%"
-                    height="260"
-                    src={url}
-                    title={`video-${i}`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                    className="rounded-lg"
-                  />
-                </div>
-              ))}
+              {client.videos?.map((url: string, i: number) => {
+                const isYouTube = url.includes("youtube.com") || url.includes("youtu.be")
+                const isInstagram = url.includes("instagram.com")
+
+                let embedUrl = url
+                if (isYouTube) {
+                  embedUrl = url
+                    .replace("watch?v=", "embed/")
+                    .replace("youtu.be/", "www.youtube.com/embed/")
+                }
+
+                const instagramEmbedUrl = isInstagram
+                  ? `${url.endsWith("/") ? url : url + "/"}embed`
+                  : ""
+
+                return (
+                  <div
+                    key={i}
+                    className="w-full  mx-auto my-4 bg-white rounded-xl shadow-xl overflow-hidden"
+                  >
+                    {isInstagram ? (
+                      <iframe
+                        src={instagramEmbedUrl}
+                        className="w-full aspect-[4/5] bg-white rounded-lg shadow"
+                        frameBorder="0"
+                        scrolling="no"
+                        allowTransparency
+                        allow="encrypted-media"
+                        title={`instagram-${i}`}
+                      ></iframe>
+                    ) : isYouTube ? (
+                      <iframe
+                        src={embedUrl}
+                        className="w-full aspect-video rounded-lg border-none"
+                        allowFullScreen
+                        title={`youtube-${i}`}
+                      ></iframe>
+                    ) : (
+                      <video
+                        src={url}
+                        controls
+                        loop
+                        className="w-full bg-black rounded-lg"
+                        style={{ objectFit: "contain" }}
+                      >
+                        Sizning brauzeringiz video tagini qo‘llab-quvvatlamaydi.
+                      </video>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </motion.div>
         )}
