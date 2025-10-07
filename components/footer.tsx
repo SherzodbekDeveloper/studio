@@ -10,6 +10,8 @@ const footerLinks = [
   { name: "Xizmatlar", href: "/#services" },
   { name: "Jamoa", href: "/#team" },
   { name: "Aloqa", href: "/#contact" },
+  { name: "Mijoz sahifasi", href: "/client-page" },
+
 ];
 
 
