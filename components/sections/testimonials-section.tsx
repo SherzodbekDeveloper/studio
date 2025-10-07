@@ -8,59 +8,61 @@ import { Button } from "@/components/ui/button"
 const testimonials = [
   {
     id: 1,
-    name: "Aziza va Sardor",
-    role: "To'y Mijozlari",
+    name: "Азиза ва Сардор",
+    role: "Туй мижозлари",
     content:
-      "Creative Studio bizning to'yimizni haqiqiy kinoga aylantirdi! Har bir lahza shunday go'zal yozilganki, har safar ko'rganimizda ko'z yoshlarimiz to'kiladi.",
-    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
+      "Creative Studio бизнинг туйимизни ҳақиқий кинога айлантирди. Ҳар бир лаҳза жуда гўзал ва хотирада сақланади.",
+    image: "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg",
     rating: 5,
   },
   {
     id: 2,
-    name: "Nilufar va Jasur",
-    role: "Love Story Mijozlari",
+    name: "Нилуфар ва Жасур",
+    role: "Лаве Стори мижозлари",
     content:
-      "Love Story videomiz ajoyib chiqdi! Professional jamoa, zamonaviy uskunalar va eng muhimi - yurakdan ishlashdi. Hammaga tavsiya qilamiz!",
-    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
+      "Love Story видеомиз ажойиб чиқди. Жамоа профессионал ва барча ишларни эътибор билан бажарди. Ҳаммага тавсия қиламиз.",
+    image: "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg",
     rating: 5,
   },
   {
     id: 3,
-    name: "Madina va Otabek",
-    role: "To'y Mijozlari",
+    name: "Мадина ва Отабек",
+    role: "Туй мижозлари",
     content:
-      "Eng yaxshi tanlov! Creative Studio jamoasi juda professional va samimiy. Bizning to'yimiz videosi barcha kutganlarimizdan ham zo'r chiqdi!",
-    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
+      "Creative Studio жамоаси профессионал ва самимий. Туйимиз видеоси барча кутганларимиздан ҳам яхши чиқди.",
+    image: "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg",
     rating: 5,
   },
   {
     id: 4,
-    name: "Sevara va Bekzod",
-    role: "Nikoh Marosimi",
+    name: "Севара ва Бекзод",
+    role: "Никоҳ маросими",
     content:
-      "Nikoh marosimimizni shunday chiroyli yozib olishganki, hamma do'stlarimiz hayron qolishdi. Sifat va xizmat darajasi a'lo!",
-    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
+      "Никоҳ маросимимизни чиройли ва диққат билан ёзишди. Хизмат ва сифат даражаси юқори.",
+    image: "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg",
     rating: 5,
   },
   {
     id: 5,
-    name: "Dilnoza va Rustam",
-    role: "To'y Mijozlari",
+    name: "Дилноза ва Рустам",
+    role: "Туй мижозлари",
     content:
-      "Ajoyib tajriba! Jamoa juda professional, video sifati yuqori darajada. To'yimizni abadiy esda qoladigan qilib olishdi.",
-    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
+      "Жамоа профессионал ва видео сифати жуда яхши. Туйимиз эсда қоладиган бўлди.",
+    image: "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg",
     rating: 5,
   },
   {
     id: 6,
-    name: "Kamola va Sherzod",
-    role: "Love Story",
+    name: "Камола ва Шерзод",
+    role: "Лаве Стори",
     content:
-      "Bizning sevgi hikoyamizni shunday go'zal tasvirlab berishganki, har safar ko'rganimizda o'sha kunlarni qayta yashayapmiz. Rahmat!",
-    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
+      "Севги ҳикоямизни гўзал ва эътибор билан тасвирлаб беришди. Ҳар сафар кўрганимизда шодланамиз. Раҳмат!",
+    image: "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg",
     rating: 5,
   },
 ]
+
+
 
 export default function TestimonialsSection() {
   const ref = useRef(null)

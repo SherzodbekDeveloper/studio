@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import CountUp from "react-countup"
 import { Button } from "../ui/button"
+import Link from 'next/link'
 
 const stats = [
   { id: 1, value: 1000, label: "Loyihalar", suffix: "+" },
@@ -66,7 +67,7 @@ export default function AboutSection() {
               Tajribali jamoamiz bilan sizning g‘oyalaringizni haqiqatga aylantiramiz.
             </p>
 
-          
+
             <div className="w-full py-10 sm:py-16">
               <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
                 {stats.map((stat) => (
@@ -100,21 +101,24 @@ export default function AboutSection() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6"
           >
-            <Button
-              size="lg"
-              className="group relative overflow-hidden bg-[#E11D48] hover:bg-[#BE123C] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              Jamoa bilan tanishish
-            </Button>
-
-            <Button
-              size="lg"
-              className="group relative overflow-hidden bg-transparent hover:bg-black/10 text-[#BE123C] border-[#BE123C] border px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-black/10 to-black/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              Biz bilan bog&apos;lanish
-            </Button>
+            <Link href={'#team'}>
+              <Button
+                size="lg"
+                className="group relative overflow-hidden bg-[#E11D48] hover:bg-[#BE123C] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Jamoa bilan tanishish
+              </Button>
+            </Link>
+            <Link href={'#contact'}>
+              <Button
+                size="lg"
+                className="group relative overflow-hidden bg-transparent hover:bg-black/10 text-[#BE123C] border-[#BE123C] border px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-black/10 to-black/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Biz bilan bog&apos;lanish
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

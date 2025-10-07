@@ -37,31 +37,12 @@ export default function Navbar() {
     }
 
     window.addEventListener("scroll", handleScroll)
-    handleScroll() // Initial check
+    handleScroll()
 
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: { scrollTo?: string }) => {
-    // Agar login yoki boshqa sahifa link bo‘lsa, to‘xtatma
-    if (!item.scrollTo) return
 
-    e.preventDefault()
-
-    const element = document.getElementById(item.scrollTo)
-    if (element) {
-      const offset = 80
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - offset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
-    }
-
-    setIsMobileMenuOpen(false)
-  }
 
 
   const isActive = (item: { scrollTo?: string }) => {
@@ -82,7 +63,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link
             href="/"
-            onClick={(e) => handleNavClick(e, navItems[0])}
+
             className="flex items-center space-x-2 cursor-pointer"
           >
             <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white to-rose-300">
@@ -135,10 +116,9 @@ export default function Navbar() {
           >
             <div className="container mx-auto px-4 py-4 space-y-2">
               {navItems.map((item) => (
-                <Link
+                <Link onClick={() => setIsMobileMenuOpen(false)}
                   key={item.href}
                   href={item.href}
-                  onClick={(e) => handleNavClick(e, item)}
                   className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${isActive(item)
                     ? "text-white bg-white/10"
                     : "text-white/60 hover:text-white hover:bg-white/5"
@@ -147,7 +127,7 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <Link href={'/client-page'}>
+              <Link href={'/client-page'} onClick={() => setIsMobileMenuOpen(false)}>
                 <Button
                   size='sm'
                   className="group cursor-pointer relative overflow-hidden bg-white hover:bg-[#BE123C] text-black hover:text-white px-4 py-3 text-sm font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
