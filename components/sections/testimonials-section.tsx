@@ -12,7 +12,7 @@ const testimonials = [
     role: "To'y Mijozlari",
     content:
       "Creative Studio bizning to'yimizni haqiqiy kinoga aylantirdi! Har bir lahza shunday go'zal yozilganki, har safar ko'rganimizda ko'z yoshlarimiz to'kiladi.",
-    image: "/happy-couple-portrait.png",
+    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
     rating: 5,
   },
   {
@@ -21,7 +21,7 @@ const testimonials = [
     role: "Love Story Mijozlari",
     content:
       "Love Story videomiz ajoyib chiqdi! Professional jamoa, zamonaviy uskunalar va eng muhimi - yurakdan ishlashdi. Hammaga tavsiya qilamiz!",
-    image: "/romantic-couple.png",
+    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
     rating: 5,
   },
   {
@@ -30,7 +30,7 @@ const testimonials = [
     role: "To'y Mijozlari",
     content:
       "Eng yaxshi tanlov! Creative Studio jamoasi juda professional va samimiy. Bizning to'yimiz videosi barcha kutganlarimizdan ham zo'r chiqdi!",
-    image: "/wedding-couple-smiling.jpg",
+    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
     rating: 5,
   },
   {
@@ -39,7 +39,7 @@ const testimonials = [
     role: "Nikoh Marosimi",
     content:
       "Nikoh marosimimizni shunday chiroyli yozib olishganki, hamma do'stlarimiz hayron qolishdi. Sifat va xizmat darajasi a'lo!",
-    image: "/traditional-wedding-couple.jpg",
+    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
     rating: 5,
   },
   {
@@ -48,7 +48,7 @@ const testimonials = [
     role: "To'y Mijozlari",
     content:
       "Ajoyib tajriba! Jamoa juda professional, video sifati yuqori darajada. To'yimizni abadiy esda qoladigan qilib olishdi.",
-    image: "/elegant-couple.jpg",
+    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
     rating: 5,
   },
   {
@@ -57,7 +57,7 @@ const testimonials = [
     role: "Love Story",
     content:
       "Bizning sevgi hikoyamizni shunday go'zal tasvirlab berishganki, har safar ko'rganimizda o'sha kunlarni qayta yashayapmiz. Rahmat!",
-    image: "/young-couple-love.jpg",
+    image: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80",
     rating: 5,
   },
 ]
@@ -101,8 +101,8 @@ export default function TestimonialsSection() {
               <span className="text-[#E11D48]">nimalar deyishadi</span>
             </h2>
 
-            <p className="sm:text-end text-center sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-[550px]">
-              Har bir loyiha — bu biz uchun nafaqat ish, balki ishonchdir.  
+            <p className="lg:text-end text-center sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-[550px]">
+              Har bir loyiha — bu biz uchun nafaqat ish, balki ishonchdir.
               Bizning mijozlarimiz fikrlari bizni har kuni yanada yaxshiroq bo‘lishga undaydi.
             </p>
           </div>
@@ -166,9 +166,8 @@ export default function TestimonialsSection() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index * 3)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  Math.floor(currentIndex / 3) === index ? "bg-gray-900 w-8" : "bg-gray-300 w-2"
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 ${Math.floor(currentIndex / 3) === index ? "bg-gray-900 w-8" : "bg-gray-300 w-2"
+                  }`}
               />
             ))}
           </div>

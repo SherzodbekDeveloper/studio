@@ -5,6 +5,7 @@ import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from '@/components/footer'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from 'sonner'
 
 
 const inter = Inter({
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Navbar />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
+          <Toaster position="top-center" />
         </ThemeProvider>
         <Footer />
       </body>

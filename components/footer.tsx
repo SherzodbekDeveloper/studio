@@ -3,12 +3,21 @@
 import Link from "next/link"
 import { Instagram, Facebook, Youtube, Mail, Phone, MapPin } from "lucide-react"
 
+
+const footerLinks = [
+  { name: "Bosh sahifa", href: "/" },
+  { name: "Biz haqimizda", href: "/#about" },
+  { name: "Xizmatlar", href: "/#services" },
+  { name: "Jamoa", href: "/#team" },
+  { name: "Aloqa", href: "/#contact" },
+];
+
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="relative bg-[#030303] border-t border-white/5 overflow-hidden">
-      {/* Floating geometric shapes */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full blur-2xl animate-float" />
         <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-br from-rose-500/10 to-orange-500/10 rounded-full blur-2xl animate-float-delayed" />
@@ -16,7 +25,6 @@ export default function Footer() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand Section */}
           <div className="space-y-4">
             <h3 className="font-pacifico text-3xl bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Creative Studio
@@ -56,52 +64,19 @@ export default function Footer() {
           <div>
             <h4 className="font-space-grotesk text-lg font-semibold text-white mb-6">Tezkor havolalar</h4>
             <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-300 text-sm flex items-center gap-2 group"
-                >
-                  <span className="w-1 h-1 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Bosh sahifa
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-gray-400 hover:text-white transition-colors duration-300 text-sm flex items-center gap-2 group"
-                >
-                  <span className="w-1 h-1 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Biz haqimizda
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  className="text-gray-400 hover:text-white transition-colors duration-300 text-sm flex items-center gap-2 group"
-                >
-                  <span className="w-1 h-1 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Xizmatlar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/projects"
-                  className="text-gray-400 hover:text-white transition-colors duration-300 text-sm flex items-center gap-2 group"
-                >
-                  <span className="w-1 h-1 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Loyihalar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/team"
-                  className="text-gray-400 hover:text-white transition-colors duration-300 text-sm flex items-center gap-2 group"
-                >
-                  <span className="w-1 h-1 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Jamoa
-                </Link>
-              </li>
-            </ul>
+  {footerLinks.map((item) => (
+    <li key={item.href}>
+      <Link
+        href={item.href}
+        className="text-gray-400 hover:text-white transition-colors duration-300 text-sm flex items-center gap-2 group"
+      >
+        <span className="w-1 h-1 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+        {item.name}
+      </Link>
+    </li>
+  ))}
+</ul>
+
           </div>
 
           {/* Services */}

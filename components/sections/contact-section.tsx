@@ -7,6 +7,14 @@ import { Textarea } from "@/components/ui/textarea"
 import { motion, useInView } from "framer-motion"
 import { Mail, MapPin, Phone, Send } from "lucide-react"
 import { useRef, useState } from "react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { toast } from 'sonner'
 
 export default function ContactSection() {
   const ref = useRef(null)
@@ -14,14 +22,57 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    email: "",
+    service: "",
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Form submitted:", formData)
+
+    const BOT_TOKEN = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
+    const CHAT_ID = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID
+
+    if (!BOT_TOKEN || !CHAT_ID) {
+      toast.error("Telegram bot token yoki chat id aniqlanmagan")
+      return
+    }
+
+    const message = `
+Ism: ${formData.name}
+Telefon: ${formData.phone}
+Xizmat: ${formData.service}
+Xabar: ${formData.message}
+  `
+
+    try {
+      const res = await fetch(
+        `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: message,
+            parse_mode: "HTML",
+          }),
+        }
+      )
+
+      const data = await res.json()
+      if (data.ok) {
+        toast.success("Yuborildi, tez orada siz bilan bog'lanamiz!")
+        setFormData({ name: "", phone: "+998", service: "", message: "" })
+      } else {console
+        toast.error("Xatolik yuz berdi, qayta urinib ko‘ring.")
+        toast.error(data)
+      }
+    } catch (err) {
+      console.error(err)
+      toast.error("Xatolik yuz berdi, qayta urinib ko‘ring.")
+    }
   }
+
+
 
   return (
     <div className="relative py-24 md:py-32 bg-white overflow-hidden">
@@ -143,28 +194,51 @@ export default function ContactSection() {
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="+998 (90) 123-45-67"
+                  placeholder="+998901234567"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => {
+                    let val = e.target.value
+
+                    if (!val.startsWith("+998")) {
+                      val = "+998"
+                    }
+
+                    val = "+998" + val.slice(4).replace(/\D/g, "").slice(0, 9)
+
+                    setFormData({ ...formData, phone: val })
+                  }}
                   className="bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 h-12"
                   required
+                  pattern="\+998\d{9}"
+                  title="Telefon raqam +998 bilan boshlanib, keyin 9 ta raqamdan iborat bo‘lishi kerak"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-gray-900 mb-2 font-medium">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="email@example.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 h-12"
-                  required
-                />
+                <div>
+                  <label htmlFor="service" className="block text-gray-900 mb-2 font-medium">
+                    Xizmatlar
+                  </label>
+                  <Select
+                    value={formData.service}
+                    onValueChange={(value) => setFormData({ ...formData, service: value })}
+                  >
+                    <SelectTrigger className="w-full h-12 bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 rounded-md">
+                      <SelectValue placeholder="Xizmatni tanlang" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="To‘y videosuratlari">To‘y videosuratlari</SelectItem>
+                      <SelectItem value="Love story videosi">Love story videosi</SelectItem>
+                      <SelectItem value="Love story fotosuratlari">Love story fotosuratlari</SelectItem>
+                      <SelectItem value="Bayram va tadbirlar">Bayram va tadbirlar</SelectItem>
+                      <SelectItem value="Maxsus loyiha">Maxsus loyiha</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
               </div>
+
+
 
               <div>
                 <label htmlFor="message" className="block text-gray-900 mb-2 font-medium">
