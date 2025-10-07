@@ -147,6 +147,15 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
+              <Link href={'/client-page'}>
+                <Button
+                  size='sm'
+                  className="group cursor-pointer relative overflow-hidden bg-white hover:bg-[#BE123C] text-black hover:text-white px-4 py-3 text-sm font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <span className="absolute  inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  Mijoz sahifasi
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}
