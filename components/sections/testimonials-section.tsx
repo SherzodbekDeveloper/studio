@@ -110,7 +110,6 @@ export default function TestimonialsSection() {
           </div>
         </motion.div>
 
-        {/* --- Testimonials Grid --- */}
         <div className="grid md:grid-cols-3 gap-6 mb-10">
           {visibleTestimonials.map((testimonial, index) => (
             <motion.div
@@ -151,7 +150,6 @@ export default function TestimonialsSection() {
           ))}
         </div>
 
-        {/* --- Carousel Controls --- */}
         <div className="flex items-center justify-center gap-4">
           <Button
             variant="outline"

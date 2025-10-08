@@ -62,7 +62,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-space-grotesk text-lg font-semibold text-white mb-6">Tezkor havolalar</h4>
             <ul className="space-y-3">
@@ -81,7 +80,6 @@ export default function Footer() {
 
           </div>
 
-          {/* Services */}
           <div>
             <h4 className="font-space-grotesk text-lg font-semibold text-white mb-6">Xizmatlarimiz</h4>
             <ul className="space-y-3">
@@ -94,7 +92,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h4 className="font-space-grotesk text-lg font-semibold text-white mb-6">Aloqa</h4>
             <ul className="space-y-4">
@@ -117,7 +114,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm text-center md:text-left">
