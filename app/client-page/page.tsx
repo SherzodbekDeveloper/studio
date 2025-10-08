@@ -182,10 +182,8 @@ export default function ClientPage() {
   useEffect(() => {
     if (!client || !youtubeApiReady || !window.YT) return
 
-    // Clear existing players
     youtubePlayersRef.current = []
 
-    // Small delay to ensure iframes are rendered
     const timer = setTimeout(() => {
       const youtubeIframes = document.querySelectorAll("iframe[data-youtube-player]")
 
@@ -193,9 +191,7 @@ export default function ClientPage() {
         const player = new window.YT.Player(iframe as HTMLIFrameElement, {
           events: {
             onStateChange: (event: YTPlayerEvent) => {
-              // When video starts playing (state === 1)
               if (event.data === window.YT.PlayerState.PLAYING) {
-                // Pause all other YouTube videos
                 youtubePlayersRef.current.forEach((otherPlayer, otherIndex) => {
                   if (otherIndex !== index && otherPlayer) {
                     try {
@@ -246,7 +242,7 @@ export default function ClientPage() {
       setClient(clientData)
       Cookies.set("client_id", clientId, { expires: 30 })
     } else {
-      setError("Mijoz topilmadi 😕")
+      setError("Mijoz topilmadi.")
       setShake(true)
       setTimeout(() => setShake(false), 500)
     }
