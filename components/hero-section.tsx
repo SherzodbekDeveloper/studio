@@ -127,9 +127,9 @@ export default function HeroGeometric({
   const [particles, setParticles] = useState<{ x: number; y: number }[]>([])
 
   useEffect(() => {
-    setParticles(Array.from({ length: 20 }).map(() => ({
-      x: Math.random() * 100,
-      y: Math.random() * 100,
+    setParticles(Array.from({ length: 40 }).map(() => ({
+      x: Math.random() * 1000,
+      y: Math.random() * 1000,
     })))
   }, [])
 
@@ -191,15 +191,25 @@ export default function HeroGeometric({
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto text-center">
 
-          <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 tracking-tight font-display">
-              <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80 text-balance">
-                {title1}
-              </span>
-              <br />
+          <motion.div
+            custom={1}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col items-center justify-center"
+          >
+            <div className="w-full max-w-2xl mx-auto md:px-2">
+              <img
+                src="logo.gold.studio.png"
+                alt="logo"
+                className="w-full  object-contain"
+              />
+            </div>
+
+            <h1 className="text-2xl sm:text-4xl md:text-5xl  lg:text-6xl font-bold tracking-tight font-display leading-tight sm:-mt-2 mt-0">
               <span
                 className={cn(
-                  "bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300 text-balance",
+                  "bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-white/90 to-amber-300 text-balance",
                   pacifico.className,
                 )}
               >
@@ -208,34 +218,23 @@ export default function HeroGeometric({
             </h1>
           </motion.div>
 
-          <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <p className="text-lg sm:text-xl md:text-2xl text-white/50 mb-10 leading-relaxed font-light tracking-wide max-w-2xl mx-auto px-4 text-balance">
-              {description}
-            </p>
-          </motion.div>
-
           <motion.div
             custom={3}
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
           >
             <Link href="#contact">
-              <Button
-                size="lg"
-                className="group relative overflow-hidden bg-[#E11D48] hover:bg-[#BE123C] text-white px-8 py-6 text-base md:text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Hoziroq bog&apos;lanish
-                <ArrowRight />
+              <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-amber-500 to-amber-900 hover:bg-[#BE123C] text-white md:px-8 md:py-6 px-4 py-3 text-base md:text-lg mt-5 font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300" >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" /> Hoziroq bog&apos;lanish <ArrowRight />
               </Button>
             </Link>
           </motion.div>
 
-
         </div>
       </div>
+
 
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-[#030303]/80 pointer-events-none" />

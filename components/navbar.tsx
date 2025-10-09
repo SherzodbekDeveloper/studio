@@ -63,12 +63,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link
             href="/"
-
-            className="flex items-center space-x-2 cursor-pointer"
+            className="flex items-center mr-2 justify-center  cursor-pointer"
           >
-            <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white to-rose-300">
-              Creative Studio
-            </span>
+           <img src="./logo.light.png" alt="" className='w-40 h-auto mt-3' />
           </Link>
 
           <div className="hidden md:flex items-center space-x-1">

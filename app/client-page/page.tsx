@@ -98,11 +98,13 @@ function FloatingParticle({ delay = 0, x = 0, y = 0 }: { delay?: number; x?: num
   )
 }
 export interface Client {
-  client_id: number
+  client_id: string
   name: string
   videos: string[]
+  phone?: string
+  address?: string
+  userId?: string
 }
-
 interface YTPlayer {
   pauseVideo: () => void
   playVideo: () => void
@@ -235,14 +237,28 @@ export default function ClientPage() {
     if (clientId.length < 6) return setError("ID to'liq emas!")
 
     setLoading(true)
-    const clientData = await checkClientId(clientId)
-    setLoading(false)
+    try {
+      const clientData = await checkClientId(clientId)
+      setLoading(false)
 
-    if (clientData) {
-      setClient(clientData)
-      Cookies.set("client_id", clientId, { expires: 30 })
-    } else {
-      setError("Mijoz topilmadi.")
+      if (clientData) {
+        setClient(clientData)
+        Cookies.set("client_id", clientId, { expires: 30 })
+      } else {
+        setError("Mijoz topilmadi.")
+        setShake(true)
+        setTimeout(() => setShake(false), 500)
+      }
+    } catch (error: any) {
+      setLoading(false)
+      console.error("[v0] Login error:", error)
+
+      // Check if it's a permission error
+      if (error?.message?.includes("permission") || error?.code === "permission-denied") {
+        setError("Firestore ruxsatlari sozlanmagan. Iltimos, firestore.rules faylini deploy qiling.")
+      } else {
+        setError("Xatolik yuz berdi. Qaytadan urinib ko'ring.")
+      }
       setShake(true)
       setTimeout(() => setShake(false), 500)
     }
