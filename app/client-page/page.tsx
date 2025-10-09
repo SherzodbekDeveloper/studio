@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react"
 import { checkClientId } from "@/lib/checkCleintId"
 import Cookies from "js-cookie"
 import { Loader2, LogOut } from "lucide-react"
+import { Client } from '@/types'
 
 function ElegantShape({
   className,
@@ -97,14 +98,7 @@ function FloatingParticle({ delay = 0, x = 0, y = 0 }: { delay?: number; x?: num
     />
   )
 }
-export interface Client {
-  client_id: string
-  name: string
-  videos: string[]
-  phone?: string
-  address?: string
-  userId?: string
-}
+
 interface YTPlayer {
   pauseVideo: () => void
   playVideo: () => void
