@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react"
 import { checkClientId } from "@/lib/checkCleintId"
 import Cookies from "js-cookie"
 import { Loader2, LogOut } from "lucide-react"
-import { Client } from '@/types'
+import type { Client } from "@/types"
 
 function ElegantShape({
   className,
@@ -243,12 +243,12 @@ export default function ClientPage() {
         setShake(true)
         setTimeout(() => setShake(false), 500)
       }
-    } catch (error: any) {
+    } catch (error) {
       setLoading(false)
       console.error("[v0] Login error:", error)
 
       // Check if it's a permission error
-      if (error?.message?.includes("permission") || error?.code === "permission-denied") {
+      if (error instanceof Error && error.message.includes("permission")) {
         setError("Firestore ruxsatlari sozlanmagan. Iltimos, firestore.rules faylini deploy qiling.")
       } else {
         setError("Xatolik yuz berdi. Qaytadan urinib ko'ring.")

@@ -4,9 +4,9 @@ import { motion } from "framer-motion"
 import { Pacifico } from "next/font/google"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Play, ArrowRight, Sparkles } from "lucide-react"
+import { Play, ArrowRight, Sparkles, Star, Zap } from "lucide-react"
 import Link from "next/link"
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 const pacifico = Pacifico({
   subsets: ["latin"],
@@ -103,7 +103,6 @@ function FloatingParticle({ delay = 0, x = 0, y = 0 }: { delay?: number; x?: num
 }
 
 export default function HeroGeometric({
-
   title1 = "Elevate Your",
   title2 = "Digital Vision",
   description = "Crafting exceptional digital experiences",
@@ -127,14 +126,19 @@ export default function HeroGeometric({
   const [particles, setParticles] = useState<{ x: number; y: number }[]>([])
 
   useEffect(() => {
-    setParticles(Array.from({ length: 40 }).map(() => ({
-      x: Math.random() * 1000,
-      y: Math.random() * 1000,
-    })))
+    setParticles(
+      Array.from({ length: 20 }).map(() => ({
+        x: Math.random() * 100,
+        y: Math.random() * 500,
+      })),
+    )
   }, [])
 
   return (
-    <div className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden bg-[#030303]" suppressHydrationWarning>
+    <div
+      className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden bg-[#030303]"
+      suppressHydrationWarning
+    >
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
 
       {particles.map((p, i) => (
@@ -188,34 +192,66 @@ export default function HeroGeometric({
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6">
-        <div className="max-w-5xl mx-auto text-center">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 " >
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              duration: 1,
+              ease: [0.23, 0.86, 0.39, 0.96],
+            }}
+          >
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6cl font-bold tracking-tight  leading-tight">
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#b38641] to-[#ded280] text-balance mt-2">
+                Biz bilan tarixni yarating!
+              </span>
+            </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              duration: 1,
+              ease: [0.23, 0.86, 0.39, 0.96],
+            }}
+            className="flex flex-col items-center justify-center mb-8"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="relative w-full max-w-4xl mx-auto mb-6"
+            >
+              <div className="absolute inset-0" />
+              <img
+                src="/logo.gold.studio.png"
+                alt="Creative Studio Logosi"
+                className="w-full object-contain relative z-10"
+              />
+            </motion.div>
+          </motion.div>
 
           <motion.div
             custom={1}
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col items-center justify-center"
+            className="space-y-4 mb-8"
           >
-            <div className="w-full max-w-2xl mx-auto md:px-2">
-              <img
-                src="logo.gold.studio.png"
-                alt="logo"
-                className="w-full  object-contain"
-              />
-            </div>
-
-            <h1 className="text-2xl sm:text-4xl md:text-5xl  lg:text-6xl font-bold tracking-tight font-display leading-tight sm:-mt-2 mt-0">
-              <span
-                className={cn(
-                  "bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-white/90 to-amber-300 text-balance",
-                  pacifico.className,
-                )}
-              >
-                {title2}
+            <motion.p
+              custom={2}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-base -mt-[40px] sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed text-balance"
+            >
+              Brendingizni go‘zal dizaynlar bilan o‘zgartiring — ular diqqatni tortadi, ilhomlantiradi va natija beradi.
+              <span className="text-[#b38641] font-semibold ml-1">
+                500+ mijozlar bizga ishonishgan.
               </span>
-            </h1>
+            </motion.p>
           </motion.div>
 
           <motion.div
@@ -223,18 +259,76 @@ export default function HeroGeometric({
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
+            className="flex flex-col items-center gap-6 mt-10"
           >
-            <Link href="#contact">
-              <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-amber-500 to-amber-900 hover:bg-[#BE123C] text-white md:px-8 md:py-6 px-4 py-3 text-base md:text-lg mt-5 font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300" >
-                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" /> Hoziroq bog&apos;lanish <ArrowRight />
-              </Button>
-            </Link>
-          </motion.div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="#contact">
+                <Button
+                  size="lg"
+                  className="group relative overflow-hidden bg-gradient-to-r from-[#b38641] to-[#b38641]/40  text-white px-8 py-6 text-lg font-bold rounded-full shadow-[0_0_30px_rgba(251,191,36,0.3)] hover:shadow-[0_0_50px_rgba(251,191,36,0.5)] transition-all duration-300"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  Hoziroq bog&apos;lanish
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
 
+              <Link href="#about">
+                <Button
+                  size="lg"
+                  className="group relative overflow-hidden bg-white text-black border border-[#b38641]/60 hover:bg-gradient-to-r px-8 py-6 text-lg font-bold rounded-full shadow-[0_0_20px_rgba(179,134,65,0.2)] hover:shadow-[0_0_40px_rgba(179,134,65,0.4)] transition-all duration-300"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-black/15 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  Biz haqimizda
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+
+              </Link>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 mt-6 text-sm"
+            >
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div
+                      key={i}
+                      className="w-8 h-8 rounded-full bg-gradient-to-br from-[#b38641] to-[#b38641] border-2 border-[#030303] flex items-center justify-center text-xs font-bold text-black"
+                    >
+                      {String.fromCharCode(64 + i)}
+                    </div>
+                  ))}
+                </div>
+                <span className="text-gray-400">
+                  <span className="text-white font-semibold">900+</span> baxtli mijozlar
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="flex gap-0.5">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                  ))}
+                </div>
+                <span className="text-gray-400">
+                  <span className="text-white font-semibold">4.9/5</span> reyting
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-amber-400" />
+                <span className="text-gray-400">
+                  <span className="text-white font-semibold">1000+</span> loyihalar yetkazilgan
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-
 
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-[#030303]/80 pointer-events-none" />

@@ -10,7 +10,6 @@ export default function HomePage() {
     <main >
       <section id="hero">
         <HeroGeometric
-          
           title2="Biz bilan tarixni yarating !"
           description="To'ylar va bayramlar uchun professional video va foto xizmatlar. Har bir lahzani san'atga aylantiramiz."
         />

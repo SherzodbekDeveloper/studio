@@ -1,6 +1,18 @@
-// Firestore client document structure
 export interface ClientLink {
   link: string
+}
+
+export interface Client {
+  client_id: string
+  name: string
+  videos: string[]
+  phone: string
+  address: string
+  userId: string
+  email: string
+  notes: string
+  code: string
+  createdAt: number
 }
 
 export interface ClientDocument {
@@ -16,16 +28,14 @@ export interface ClientDocument {
   createdAt: number
 }
 
-// Client type for application use
-export interface Client {
-  client_id: string
-  name: string
-  videos: string[]
+export interface FirestoreClientData {
+  code?: string
+  name?: string
+  clientLinks?: ClientLink[]
   phone?: string
   address?: string
   userId?: string
   email?: string
   notes?: string
-  code?: string
   createdAt?: number
 }
