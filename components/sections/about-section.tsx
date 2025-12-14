@@ -4,6 +4,7 @@ import { useRef } from "react"
 import CountUp from "react-countup"
 import { Button } from "../ui/button"
 import Link from 'next/link'
+import ScrollingLogos, { sampleLogos } from '../logos-carousel'
 
 const stats = [
   { id: 1, value: 1000, label: "Loyihalar", suffix: "+" },
@@ -122,6 +123,7 @@ export default function AboutSection() {
           </motion.div>
         </div>
       </div>
+     
     </div>
   )
 }
