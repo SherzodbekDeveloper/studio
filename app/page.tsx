@@ -2,6 +2,7 @@ import HeroGeometric from "@/components/hero-section"
 import ScrollingLogos, { sampleLogos } from '@/components/logos-carousel'
 import AboutSection from "@/components/sections/about-section"
 import ContactSection from "@/components/sections/contact-section"
+import EmployeeBirthdaySection from '@/components/sections/employee-birthday-section'
 import ProjectsSection from '@/components/sections/projects-section'
 import ServicesSection from "@/components/sections/service-section"
 import TeamSection from "@/components/sections/team-section"
@@ -33,14 +34,7 @@ export default function HomePage() {
       <section id="team">
         <TeamSection />
       </section>
-      <section id="testimonials">
-        <TestimonialsSection />
-      </section>
-
-      <section id="contact">
-        <ContactSection />
-      </section>
-      <section>
+         <section>
         <div className=" antialiased py-12 ">
           <div className="container mx-auto px-6">
             <div className="text-center mx-auto max-w-lg mb-8">
@@ -51,6 +45,18 @@ export default function HomePage() {
             <ScrollingLogos logos={sampleLogos} />
           </div>
         </div>
+      </section>
+      <section id="testimonials">
+        <TestimonialsSection />
+      </section>
+
+      <section id="contact">
+        <ContactSection />
+      </section>
+   
+
+      <section>
+        <EmployeeBirthdaySection />
       </section>
     </main>
   )
